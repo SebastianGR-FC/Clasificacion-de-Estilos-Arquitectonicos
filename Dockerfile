@@ -1,17 +1,14 @@
-# Usa una imagen oficial de Python como imagen base
+# Use an official Python runtime as the base image
 FROM python:3.10-slim
 
-# Establece el directorio de trabajo en el contenedor
+# Set the working directory in the container
 WORKDIR /app
 
-# Copia el contenido del directorio actual en el contenedor en /app
+# Copy the application files into the container
 COPY ./app /app
 
-# Instala los paquetes necesarios especificados en requirements.txt
+# Install dependencies
 RUN pip install -r requirements.txt
 
-# Expone el puerto que FastAPI usara
-EXPOSE 8000
-
-# Ejecuta main.py cuando se inicie el contenedor
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Command to run the FastAPI app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
