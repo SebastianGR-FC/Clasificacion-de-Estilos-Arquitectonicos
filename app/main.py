@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # Montar archivos estáticos (como imágenes y archivos CSS)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 
 # Cargar el modelo de predicción de imágenes
 classifier = Classifier("model.keras")
@@ -28,7 +28,7 @@ classifier = Classifier("model.keras")
 async def index():
     try:
         # Intentar abrir el archivo index.html
-        with open("/static/index.html", "r") as f:
+        with open("/frontend/index.html", "r") as f:
             return HTMLResponse(content=f.read())
     except FileNotFoundError:
         # Si no se encuentra el archivo, devolver un error 404

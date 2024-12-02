@@ -5,7 +5,7 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copia el contenido del directorio actual en el contenedor en /app
-COPY . /app
+COPY ./app /app
 
 # Instala los paquetes necesarios especificados en requirements.txt
 RUN pip install -r requirements.txt
