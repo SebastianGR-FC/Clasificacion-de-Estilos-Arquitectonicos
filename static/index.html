@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador de Imágenes</title>
+    <style>
+        /* Estilo general para el cuerpo */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2f2f2f, #505050); /* Gradiente gris oscuro */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Estilo para el título */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Descripción de la aplicación */
+        .description {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ddd;
+        }
+
+        /* Contenedor principal */
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Estilo para el input de archivo */
+        .file-input {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            background-color: #f8f9fa;
+        }
+
+        /* Estilo para el botón */
+        button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+
+        /* Estilo cuando el botón es hover */
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Contenedor de la vista previa de la imagen */
+        .image-preview-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* Estilo para la imagen previa */
+        .image-preview {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 8px;
+            display: none;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo para los resultados */
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            white-space: pre-line; /* Mantiene los saltos de línea */
+        }
+    </style>
+</head>
+<body>
+    <h1>Clasificador de Estilos Arquitectónicos</h1>
+    <p class="description">
+        Esta aplicación te permite cargar una imagen y clasificarla según diferentes estilos arquitectónicos.
+    </p>
+    <div class="container">
+        <!-- Input para seleccionar una imagen -->
+        <input type="file" id="imageInput" class="file-input" accept="image/*" />
+        
+        <!-- Botón para clasificar la imagen -->
+        <button onclick="uploadImage()">Clasificar Imagen</button>
+
+        <!-- Contenedor de la vista previa de la imagen -->
+        <div class="image-preview-container">
+            <img id="imagePreview" class="image-preview" alt="Vista previa de la imagen" />
+        </div>
+
+        <!-- Área donde se muestran los resultados -->
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        async function uploadImage() {
+            const fileInput = document.getElementById("imageInput");
+            const resultDiv = document.getElementById("result");
+            const preview = document.getElementById("imagePreview");
+
+            // Limpiar los resultados previos
+            resultDiv.textContent = "";
+
+            // Verificar si se seleccionó una imagen
+            if (!fileInput.files.length) {
+                resultDiv.textContent = "Por favor selecciona una imagen.";
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append("file", file);
+
+            // Mostrar la vista previa de la imagen seleccionada
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+
+            // Enviar la imagen al servidor para clasificación
+            try {
+                const response = await fetch("http://127.0.0.1:8000/predict/", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    resultDiv.textContent = `Estilo: ${data.clase} \nConfianza: ${data.confianza}`;
+                } else {
+                    resultDiv.textContent = `Error: ${data.detail}`;
+                }
+            } catch (error) {
+                resultDiv.textContent = "Ocurrió un error al subir la imagen.";
+            }
+        }
+    </script>
+</body>
+</html>
