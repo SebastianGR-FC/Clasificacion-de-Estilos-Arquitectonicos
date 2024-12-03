@@ -6,8 +6,6 @@
 - **Integrante**:  
   - Sebastian García Rodríguez
 
-![Mosquito](../images/descarga.jpeg)
-
 ## Índice
 - [Portada](#portada)
 - [Alcance del proyecto](#alcance-del-proyecto)
