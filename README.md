@@ -1,7 +1,7 @@
 # ![Logo Facultad de Ciencias](images/logoFC.png) Clasificación de Estilos Arquitectónicos
 
 [![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
-[![TensorFlow Version](https://img.shields.io/badge/TensorFlow-2.17-orange.svg)](https://www.tensorflow.org/)
+[![TensorFlow Version](https://img.shields.io/badge/TensorFlow-2.14-orange.svg)](https://www.tensorflow.org/)
 
 ## Integrante:
 Sebastian García Rodríguez
