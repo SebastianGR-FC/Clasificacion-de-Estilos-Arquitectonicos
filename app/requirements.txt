@@ -1,4 +1,5 @@
 tensorflow==2.14.0
 pillow
 fastapi
+numpy
 uvicorn
