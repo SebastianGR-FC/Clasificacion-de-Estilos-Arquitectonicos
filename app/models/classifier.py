@@ -47,6 +47,6 @@ class Classifier:
 
         # Devolver el resultado con la clase y la confianza redondeada a dos decimales
         return {
-            "class": predicted_class,  # Nombre de la clase predicha
+            "clase": predicted_class,  # Nombre de la clase predicha
             "confianza": round(float(confidence), 2)  # Confianza de la predicción
         }
