@@ -33,7 +33,7 @@ async def index():
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="index.html no encontrado.")
 
-# Ruta de preddicion
+# Ruta de predicion
 @app.post("/predict/")
 async def predecir(file: UploadFile = File(...)):
     try:
