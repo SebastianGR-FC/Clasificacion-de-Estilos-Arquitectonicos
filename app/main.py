@@ -8,7 +8,7 @@ from app.models.classifier import Classifier
 
 app = FastAPI()
 
-# Habilitar CORS
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Montar archivos del frontend
+# Montar los archivos del frontend
 app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 
 # Cargar el modelo
@@ -27,13 +27,13 @@ classifier = Classifier("model.keras")
 @app.get("/", response_class=HTMLResponse)
 async def index():
     try:
-        # Abrir de forma segura el contenido de index.html
+        # Safely open and return the index.html content
         with open("frontend/index.html", "r") as f:
             return HTMLResponse(content=f.read())
     except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="index.html no encontrado")
+        raise HTTPException(status_code=404, detail="index.html no encontrado.")
 
-# Ruta de predicción
+# Ruta de preddicion
 @app.post("/predict/")
 async def predecir(file: UploadFile = File(...)):
     try:
@@ -49,10 +49,10 @@ async def predecir(file: UploadFile = File(...)):
         # Preprocesar la imagen
         img_array = classifier.preprocess_image(image)
 
-        # Obtener el resultado de la predicción
+        # Obtener el resultado de la prediccion
         resultado = classifier.predict(img_array)
 
-        # Devolver los resultados de la predicción
+        # Devolver los resultados de la prediccion del modelo
         return JSONResponse(content={
             "clase": resultado["clase"],
             "confianza": resultado["confianza"]
