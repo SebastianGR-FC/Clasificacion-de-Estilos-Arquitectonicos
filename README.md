@@ -22,8 +22,8 @@ El objetivo de este proyecto es desarrollar un modelo de aprendizaje automático
 ## Descripción General del Conjunto de Datos
 
 Este proyecto utiliza un conjunto de datos compuesto por 10,113 imágenes de 25 estilos arquitectónicos diferentes. Este conjunto de datos es una combinación de dos fuentes principales:
-	1.	Imágenes extraídas de Google Images (g-images), que fueron recopiladas específicamente para este proyecto.
-	2.	Conjunto de datos del artículo “Architectural Style Classification using Multinomial Latent Logistic Regression” (ECCV 2014), realizado por Zhe Xu. Este conjunto de datos está disponible en Kaggle.
+1. Imágenes extraídas de Google Images (g-images), que fueron recopiladas específicamente para este proyecto.
+2. Conjunto de datos del artículo “Architectural Style Classification using Multinomial Latent Logistic Regression” (ECCV 2014), realizado por Zhe Xu. Este conjunto de datos está disponible en Kaggle.
 
 La fuente original del conjunto de datos creada por Zhe Xu incluye 25 estilos arquitectónicos, pero en este proyecto solo se utilizaron 10 clases específicas de este conjunto de datos para la clasificación de estilos arquitectónicos.
 
