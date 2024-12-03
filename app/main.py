@@ -27,7 +27,7 @@ classifier = Classifier("model.keras")
 @app.get("/", response_class=HTMLResponse)
 async def index():
     try:
-        # Safely open and return the index.html content
+        # Abrir el archivo index.html
         with open("frontend/index.html", "r") as f:
             return HTMLResponse(content=f.read())
     except FileNotFoundError:
