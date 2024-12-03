@@ -1,4 +1,4 @@
-# ![Logo Facultad de Ciencias](images/logo.png) Clasificación de Estilos Arquitectónicos
+<img src="images/logo.png" alt="Logo Facultad de Ciencias" width="100"> Clasificación de Estilos Arquitectónicos
 
 [![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 [![TensorFlow Version](https://img.shields.io/badge/TensorFlow-2.17-orange.svg)](https://www.tensorflow.org/)
