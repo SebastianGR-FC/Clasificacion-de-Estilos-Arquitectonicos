@@ -83,6 +83,8 @@ El conjunto de datos final consta de las siguientes cantidades de imágenes en c
 * Conjunto de Validación: 435 imágenes distribuidas entre las 10 clases.
 * Conjunto de Prueba: 80 imágenes distribuidas entre las 10 clases.
 
+![Dostribución de clases](../images/clases.png)
+
 ### 5. Preprocesamiento
 
 Las imágenes son preprocesadas mediante los siguientes pasos:
