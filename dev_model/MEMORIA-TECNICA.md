@@ -25,6 +25,8 @@ El objetivo de este proyecto es desarrollar un modelo de clasificación de imág
 
 ### Introducción
 
+El proyecto Clasificación de Estilos Arquitectónicos utiliza redes neuronales convolucionales basadas en VGG16 para identificar imágenes de 10 estilos arquitectónicos seleccionados, como gótico, barroco y deconstructivista, entre otros.
+
 ## Fuentes de información y procedimientos aplicados
 
 Este proyecto utiliza un conjunto de datos compuesto por imágenes de 10 estilos arquitectónicos diferentes. Este conjunto de datos proviene de dos fuentes principales:
