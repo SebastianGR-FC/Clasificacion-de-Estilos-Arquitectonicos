@@ -40,7 +40,7 @@ cd Clasificacion-de-Estilos-Arquitectonicos
 
 El archivo de modelo necesario para ejecutar la API es bastante pesado y no está incluido directamente en el repositorio. Puedes descargarlo desde el siguiente enlace:
  
-[Descargar modelo image_classifier_model.keras](https://drive.google.com/file/d/1dDQc0MbJ7ISSx5R4_XZDaKuU0P8YSR7M/view?usp=sharing)
+[Descargar modelo image_classifier_model.keras](https://drive.google.com/file/d/1dREOyT8R_ulfPpwcBnGdSY6yXRzWaUNb/view?usp=share_link)
 
 Por favor, guarda el modelo image_classifier_model.keras dentro del folder Clasificacion-de-Estilos-Arquitectonicos
  
