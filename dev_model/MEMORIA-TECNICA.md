@@ -34,22 +34,16 @@ Este proyecto utiliza un conjunto de datos compuesto por imágenes de 10 estilos
 2. Conjunto de datos del artículo “Architectural Style Classification using Multinomial Latent Logistic Regression” (ECCV 2014): Este conjunto de datos fue creado por Zhe Xu y está disponible en Kaggle. El artículo original incluye 25 estilos arquitectónicos, pero en este proyecto solo se utilizan 10 clases específicas para la tarea de clasificación.
 
 Las 10 clases seleccionadas son las siguientes:
-	•	Ancient Egyptian architecture: 406 imágenes
-	•	American Foursquare architecture: 362 imágenes
-	•	Baroque architecture: 456 imágenes
-	•	Byzantine architecture: 313 imágenes
-	•	Colonial architecture: 480 imágenes
-	•	Deconstructivism: 335 imágenes
-	•	Gothic architecture: 331 imágenes
-	•	Novelty architecture: 382 imágenes
-	•	Postmodern architecture: 322 imágenes
-	•	Russian Revival architecture: 352 imágenes
-
-
-### Observaciones:
-
-
-
+* Ancient Egyptian architecture: 406 imágenes
+* American Foursquare architecture: 362 imágenes
+* Baroque architecture: 456 imágenes
+* Byzantine architecture: 313 imágenes
+* Colonial architecture: 480 imágenes
+* Deconstructivism: 335 imágenes
+* Gothic architecture: 331 imágenes
+* Novelty architecture: 382 imágenes
+* Postmodern architecture: 322 imágenes
+* Russian Revival architecture: 352 imágenes
 
 ## Pipeline de Preparación
 
@@ -62,18 +56,19 @@ kagglehub.dataset_download('dumitrux/architectural-styles-dataset')
 ### 2. Definición de Directorios y Categorías
 
 El directorio principal del conjunto de datos se encuentra en la siguiente ubicación:
-
+```python
 dataset_dir = '/root/.cache/kagglehub/datasets/dumitrux/architectural-styles-dataset/versions/3/architectural-styles-dataset'
+```
 
 Las categorías específicas seleccionadas para la clasificación de estilos arquitectónicos son:
-
+```python
 categories = [
     'American Foursquare architecture', 'Ancient Egyptian architecture',
     'Baroque architecture', 'Byzantine architecture', 'Colonial architecture',
     'Deconstructivism', 'Gothic architecture', 'Novelty architecture',
     'Postmodern architecture', 'Russian Revival architecture'
 ]
-
+```
 ### 3. Creación de Directorios de Datos y División de Imágenes
 
 El directorio data se crea y se dividen las imágenes en tres particiones: entrenamiento, validación y prueba. El proceso incluye:
@@ -86,7 +81,20 @@ El conjunto de datos final consta de las siguientes cantidades de imágenes en c
 * Conjunto de Validación: 475 imágenes distribuidas entre las 10 clases.
 * Conjunto de Prueba: 90 imágenes distribuidas entre las 10 clases.
 
+### Preprocesamiento
 
+Antes de ser alimentadas al modelo, las imágenes son preprocesadas mediante los siguientes pasos:
+* Redimensionamiento: Las imágenes se redimensionan a un tamaño uniforme de 224x224 píxeles, que es el tamaño de entrada requerido para modelos preentrenados como VGG16.
+* Escalado de Imágenes: Los valores de los píxeles se normalizan en el rango [0, 1] para mejorar la convergencia del modelo.
+
+Dado que algunas clases tienen más imágenes que otras, se calcula un peso para cada clase que equilibrará su influencia durante el entrenamiento. Este enfoque ayuda a evitar que el modelo favorezca las clases con más ejemplos, asegurando una clasificación más equilibrada.
+```python
+class_weights = compute_class_weight(
+    'balanced', 
+    classes=np.unique(train_generator.classes), 
+    y=train_generator.classes
+)
+```
 ## Construcción del modelo
 
 ### Aquitectura
