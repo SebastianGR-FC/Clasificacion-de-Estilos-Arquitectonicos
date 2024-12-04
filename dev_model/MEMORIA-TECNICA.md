@@ -72,14 +72,16 @@ categories = [
 ### 3. Creación de Directorios de Datos y División de Imágenes
 
 El directorio data se crea y se dividen las imágenes en tres particiones: entrenamiento, validación y prueba. El proceso incluye:
-* División de Datos: Los datos se dividen en 80% para entrenamiento, 15% para validación y 5% para prueba. Esto se realiza utilizando train_test_split de Scikit-learn.
+* División de Datos: Los datos se dividen en 75% para entrenamiento, 15% para validación y 15% para prueba. Esto se realiza utilizando train_test_split de Scikit-learn.
 * Organización de Directorios: Se crean subdirectorios para cada partición de datos y cada categoría, y las imágenes se mueven a los directorios correspondientes.
 
 ### 4. Distribución de Imágenes
+Para asegurar un equilibrio en el número de imágenes por categoría, se limita el número de imágenes seleccionadas de cada clase a un valor objetivo. En este caso, se seleccionan hasta 350 imágenes por categoría. Si una categoría tiene menos imágenes, se utilizan todas las disponibles. Este paso ayuda a balancear las clases y evitar que el modelo favorezca las clases con más ejemplos.
+
 El conjunto de datos final consta de las siguientes cantidades de imágenes en cada partición:
-* Conjunto de Entrenamiento: 3,174 imágenes distribuidas entre las 10 clases.
-* Conjunto de Validación: 475 imágenes distribuidas entre las 10 clases.
-* Conjunto de Prueba: 90 imágenes distribuidas entre las 10 clases.
+* Conjunto de Entrenamiento: 2,886 imágenes distribuidas entre las 10 clases.
+* Conjunto de Validación: 435 imágenes distribuidas entre las 10 clases.
+* Conjunto de Prueba: 80 imágenes distribuidas entre las 10 clases.
 
 ### 5. Preprocesamiento
 
@@ -151,7 +153,6 @@ Validación: La precisión en el conjunto de validación muestra un desempeño a
 Entrenamiento: La pérdida disminuye consistentemente y se estabiliza en valores bajos (~0.3), lo que refleja que el modelo está aprendiendo adecuadamente.
 
 Validación: La pérdida de validación se mantiene baja, pero comienza a estabilizarse en valores ligeramente elevados, en el rango de 0.6, a partir de la mitad del entrenamiento. Esto indica que el modelo podría beneficiarse de la implementación de técnicas adicionales de regularización para mejorar la estabilidad.
- 
 
 ## Pruebas sobre el modelo
 
@@ -160,7 +161,16 @@ Validación: La pérdida de validación se mantiene baja, pero comienza a estabi
 
 ## Conclusiones
 
-## Conclusiones generales
+El modelo desarrollado para la clasificación de estilos arquitectónicos ha mostrado un rendimiento razonable, con una precisión de alrededor del 75-85% en los conjuntos de entrenamiento y validación. Sin embargo, la matriz de confusión indica que hay áreas significativas en las que el modelo necesita mejorar. En particular, se observan confusiones entre ciertas clases que podrían estar relacionadas con similitudes visuales entre los estilos arquitectónicos o con la falta de datos representativos para algunas clases específicas.
+
+A pesar de que el modelo no presenta signos claros de sobreajuste, la estabilidad de la pérdida de validación y su falta de mejoras significativas durante las últimas épocas sugieren que se podría optimizar aún más el modelo.
+
+Algunas estrategias que podrían mejorar el desempeño incluyen:
+1. Ajustes en la arquitectura: Experimentar con otras configuraciones de redes neuronales o incluso con otras arquitecturas preentrenadas podría mejorar la capacidad del modelo para extraer características más claras de las imágenes.
+2. Regularización adicional: Técnicas como la normalización de lotes (batch normalization) o el uso de más capas de dropout podrían ayudar a mejorar la generalización del modelo.
+3. Ampliación de datos: Incrementar la cantidad de datos, especialmente para clases con menos ejemplos, podría ser beneficioso.
+
+El modelo presenta una base sólida para la clasificación de estilos arquitectónicos, es evidente que necesita más ajustes y refinamientos para mejorar su rendimiento, particularmente en términos de precisión en la clasificación de clases más difíciles de diferenciar.
 
 ## Anexos
 - [Repositorio Github](https://github.com/SebastianGR-FC/Clasificacion-de-Estilos-Arquitectonicos)
