@@ -87,6 +87,12 @@ Las imágenes son preprocesadas mediante los siguientes pasos:
 * Redimensionamiento: Las imágenes se redimensionan a un tamaño uniforme de 224x224 píxeles, que es el tamaño de entrada requerido para modelos preentrenados como VGG16.
 * Escalado de Imágenes: Los valores de los píxeles se normalizan en el rango [0, 1] para mejorar la convergencia del modelo.
 
+* Aumento de Datos (Data Augmentation): Para mejorar la generalización del modelo y evitar el sobreajuste, se aplican transformaciones aleatorias a las imágenes durante el entrenamiento:
+    * Rotación: Las imágenes se rotan aleatoriamente hasta 15 grados.
+    * Desplazamiento Horizontal: Las imágenes se desplazan aleatoriamente hasta un 10% en dirección horizontal.
+    * Desplazamiento Vertical: Las imágenes se desplazan aleatoriamente hasta un 10% en dirección vertical.
+    * Volteo Horizontal: Las imágenes se voltean aleatoriamente en dirección horizontal.
+
 ### 6. Manejo de desequilibrio entre clases
 
 Dado que algunas clases tienen más imágenes que otras, se calcula un peso para cada clase que equilibrará su influencia durante el entrenamiento. Este enfoque ayuda a evitar que el modelo favorezca las clases con más ejemplos, asegurando una clasificación más equilibrada.
