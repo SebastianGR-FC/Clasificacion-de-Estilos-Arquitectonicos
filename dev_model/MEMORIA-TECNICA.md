@@ -15,10 +15,8 @@
   - [Construcción del modelo](#construcción-del-modelo)
   - [Resultados modelo](#resultados-modelo)
   - [Pruebas sobre el modelo](#pruebas-sobre-el-modelo)
-  - [Conclusiones](#conclusiones)
-- [Conclusiones generales](#conclusiones-generales)
+- [Conclusiones](#conclusiones)
 - [Anexos](#anexos)
-- [Glosario](#glosario)
 
 ## Alcance del proyecto
 
