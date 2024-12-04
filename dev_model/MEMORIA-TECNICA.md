@@ -127,7 +127,7 @@ El código implementa un modelo de clasificación de imágenes utilizando una re
 * Trainable params: 19,404,554 (74.02 MB)
 * Non-trainable params: 1,735,488 (6.62 MB)
 * Optimizer params: 38,809,110 (148.05 MB)
-* 
+  
 ### Funcionamiento del Modelo
 1. Capa de entrada: La imagen de entrada se redimensiona a 224x224 píxeles y se normaliza para que los valores de los píxeles estén en el rango [0, 1].
 2. Base VGG16: Se utiliza la arquitectura preentrenada de VGG16 sin las capas finales completamente conectadas. Esta base extrae características importantes de las imágenes (bordes, texturas, formas).
