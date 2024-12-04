@@ -142,7 +142,7 @@ El código implementa un modelo de clasificación de imágenes utilizando una re
 Esta red es adecuada para la tarea de clasificación de estilos arquitectónicos porque:
 * Extrae características relevantes de las imágenes mediante el uso de VGG16, una red preentrenada muy eficaz en tareas de visión por computadora.
 * Se adapta bien a la clasificación multiclase gracias a la capa de salida con activación softmax.
-* * Es flexible y escalable, permitiendo ajustes en las capas finales para mejorar el rendimiento según los requerimientos específicos del problema.
+* Es flexible y escalable, permitiendo ajustes en las capas finales para mejorar el rendimiento según los requerimientos específicos del problema.
 
 ## Resultados modelo
 
