@@ -83,7 +83,7 @@ El conjunto de datos final consta de las siguientes cantidades de imágenes en c
 * Conjunto de Validación: 435 imágenes distribuidas entre las 10 clases.
 * Conjunto de Prueba: 80 imágenes distribuidas entre las 10 clases.
 
-![Dostribución de clases](../images/clases.png)
+![Distribución de clases](../images/clases.png)
 
 ### 5. Preprocesamiento
 
@@ -150,7 +150,7 @@ Esta red es adecuada para la tarea de clasificación de estilos arquitectónicos
 
 El modelo no muestra signos claros de sobreajuste, ya que las métricas de validación son similares a las de entrenamiento.
 
-![grafica](../images/grafica.png)
+![Resultados](../images/grafica.png)
 
 ### **Precisión (Accuracy)**:
 Entrenamiento: La precisión alcanza valores cercanos a 70% rápidamente, indicando un ajuste aceptable a los datos de entrenamiento.
