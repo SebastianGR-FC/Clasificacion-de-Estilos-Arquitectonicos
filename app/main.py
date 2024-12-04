@@ -21,7 +21,7 @@ app.add_middleware(
 app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 
 # Cargar el modelo
-classifier = Classifier("model.keras")
+classifier = Classifier("image_classifier_model.keras")
 
 # Mostrar index.html
 @app.get("/", response_class=HTMLResponse)
