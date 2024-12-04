@@ -3,7 +3,7 @@
 ## Portada
 - **Nombre del Proyecto**: Clasificación de Estilos Arquitectónicos 
 - **Fecha**: 4 de diciembre de 2024.
-- **Integrante**:  
+- **Autor**:  
   - Sebastian García Rodríguez
 
 ## Índice
@@ -81,9 +81,9 @@ El conjunto de datos final consta de las siguientes cantidades de imágenes en c
 * Conjunto de Validación: 475 imágenes distribuidas entre las 10 clases.
 * Conjunto de Prueba: 90 imágenes distribuidas entre las 10 clases.
 
-### Preprocesamiento
+### 5. Preprocesamiento
 
-Antes de ser alimentadas al modelo, las imágenes son preprocesadas mediante los siguientes pasos:
+Las imágenes son preprocesadas mediante los siguientes pasos:
 * Redimensionamiento: Las imágenes se redimensionan a un tamaño uniforme de 224x224 píxeles, que es el tamaño de entrada requerido para modelos preentrenados como VGG16.
 * Escalado de Imágenes: Los valores de los píxeles se normalizan en el rango [0, 1] para mejorar la convergencia del modelo.
 
@@ -95,6 +95,9 @@ class_weights = compute_class_weight(
     y=train_generator.classes
 )
 ```
+
+### 6. Manejo de desequilibrio entre clases
+
 ## Construcción del modelo
 
 ### Aquitectura
