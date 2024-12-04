@@ -101,30 +101,62 @@ class_weights = compute_class_weight(
 
 ## Construcción del modelo
 
+El código implementa un modelo de clasificación de imágenes utilizando una red neuronal convolucional (CNN) basada en VGG16. En este caso, el objetivo es clasificar imágenes de arquitectura en diferentes estilos. Las CNNs son muy eficaces para extraer características espaciales de las imágenes, como bordes, texturas y patrones complejos, lo que las hace adecuadas para el análisis visual de edificios y estructuras arquitectónicas.
+
+
 ### Aquitectura
 
+| **Layer (type)**           | **Output Shape**         | **Param #** |
+|----------------------------|--------------------------|-------------|
+| `input_1 (InputLayer)`     | (None, 224, 224, 3)     | 0           |
+| `vgg16 (Functional)`          | (None, 7, 7, 512)    | 14,714,688 |
+| `flatten (Flatten)` | (None, 25088)    | 0          |
+| `dense (Dense)`        | (None, 256)    | 6,422,784       |
+| `dropout (Dropout)` | (None, 256)     | 0           |
+| `dense_1 (Dense)`          | (None, 10)               | 2,570        |
+
+* Total params: 59,949,152 (228.69 MB)
+* Trainable params: 19,404,554 (74.02 MB)
+* Non-trainable params: 1,735,488 (6.62 MB)
+* Optimizer params: 38,809,110 (148.05 MB)
+* 
 ### Funcionamiento del Modelo
+1. Capa de entrada: La imagen de entrada se redimensiona a 224x224 píxeles y se normaliza para que los valores de los píxeles estén en el rango [0, 1].
+2. Base VGG16: Se utiliza la arquitectura preentrenada de VGG16 sin las capas finales completamente conectadas. Esta base extrae características importantes de las imágenes (bordes, texturas, formas).
+3. Capa Flatten: Aplana la salida 3D de VGG16 en un vector 1D, lo que permite que las capas densas posteriores realicen la clasificación.
+4. Capas densas: La primera capa densa con 256 unidades y activación ReLU permite que el modelo aprenda representaciones más abstractas de las características extraídas. La capa de Dropout con una probabilidad del 50% ayuda a prevenir el sobreajuste.
+5. Capa de salida: La capa de salida tiene 10 unidades (una por cada estilo arquitectónico) y utiliza una función de activación softmax, lo que permite que el modelo haga clasificación multiclase.
+
+
 
 ### Justificación 
 
+Esta red es adecuada para la tarea de clasificación de estilos arquitectónicos porque:
+* Extrae características relevantes de las imágenes mediante el uso de VGG16, una red preentrenada muy eficaz en tareas de visión por computadora.
+* Se adapta bien a la clasificación multiclase gracias a la capa de salida con activación softmax.
+* * Es flexible y escalable, permitiendo ajustes en las capas finales para mejorar el rendimiento según los requerimientos específicos del problema.
+
 ## Resultados modelo
 
+El modelo no muestra signos claros de sobreajuste, ya que las métricas de validación son similares a las de entrenamiento.
+
+![grafica](../images/grafica.png)
+
 ### **Precisión (Accuracy)**:
+Entrenamiento: La precisión alcanza valores cercanos a 70% rápidamente, indicando un ajuste aceptable a los datos de entrenamiento.
+
+Validación: La precisión en el conjunto de validación muestra un desempeño aceptable, alcanzando un valor cercano al 70-80%. Sin embargo, a medida que avanzan las épocas, esta métrica se estabiliza y no experimenta mejoras significativas,
 
 ### **Pérdida (Loss)**:
+Entrenamiento: La pérdida disminuye consistentemente y se estabiliza en valores bajos (~0.3), lo que refleja que el modelo está aprendiendo adecuadamente.
+
+Validación: La pérdida de validación se mantiene baja, pero comienza a estabilizarse en valores ligeramente elevados, en el rango de 0.6, a partir de la mitad del entrenamiento. Esto indica que el modelo podría beneficiarse de la implementación de técnicas adicionales de regularización para mejorar la estabilidad.
  
 
 ## Pruebas sobre el modelo
 
 ### **Matriz de Confusión**
-
-## **Métricas de Evaluación**
-
-### **1. Precisión (Precision)**
-
-### **2. Recall (Sensibilidad)**
-
-### **3. F1-Score**
+![Matriz de confusión](../images/matrix.png)
 
 ## Conclusiones
 
