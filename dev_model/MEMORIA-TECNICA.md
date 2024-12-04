@@ -50,9 +50,9 @@ Las 10 clases seleccionadas son las siguientes:
 ### 1. Descarga del Conjunto de datos
 
 El conjunto de datos fue descargado desde Kaggle utilizando el comando:
-
+```python
 kagglehub.dataset_download('dumitrux/architectural-styles-dataset')
-
+```
 ### 2. Definición de Directorios y Categorías
 
 El directorio principal del conjunto de datos se encuentra en la siguiente ubicación:
